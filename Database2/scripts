@@ -1,0 +1,406 @@
+Queries
+USE [master]
+GO
+/****** Object:  Database [YI_PD2_ETSDatabase]    Script Date: 2017/11/5 16:28:57 ******/
+CREATE DATABASE [YI_PD2_ETSDatabase]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'YI_PD2_ETSDatabase', FILENAME = N'f:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\YI_PD2_ETSDatabase.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'YI_PD2_ETSDatabase_log', FILENAME = N'f:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\YI_PD2_ETSDatabase_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [YI_PD2_ETSDatabase].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET RECOVERY FULL 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET  MULTI_USER 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'YI_PD2_ETSDatabase', N'ON'
+GO
+USE [YI_PD2_ETSDatabase]
+GO
+/****** Object:  Table [dbo].[EmpHours]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EmpHours](
+	[EmpHoursID] [int] IDENTITY(1,1) NOT NULL,
+	[EmpID] [int] NOT NULL,
+	[WorkDate] [date] NOT NULL,
+	[Hours] [float] NOT NULL,
+ CONSTRAINT [PK_EmpHours] PRIMARY KEY CLUSTERED 
+(
+	[EmpHoursID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Employees]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Employees](
+	[EmpID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [varchar](30) NOT NULL,
+	[LastName] [varchar](30) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+	[DOB] [date] NOT NULL,
+	[Phone] [varchar](20) NULL,
+ CONSTRAINT [PK_Employees] PRIMARY KEY CLUSTERED 
+(
+	[EmpID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[LoginInfo]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[LoginInfo](
+	[UserName] [varchar](50) NOT NULL,
+	[PassWord] [varchar](50) NOT NULL,
+	[AccountType] [varchar](50) NOT NULL,
+	[EmpID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[EmpHours] ON 
+
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (1, 1, CAST(N'2017-11-01' AS Date), 7.5)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (2, 3, CAST(N'2017-11-01' AS Date), 6.25)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (3, 5, CAST(N'2017-11-01' AS Date), 11)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (4, 2, CAST(N'2017-11-02' AS Date), 6)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (5, 4, CAST(N'2017-11-02' AS Date), 7.5)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (6, 5, CAST(N'2017-11-02' AS Date), 7.5)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (7, 1, CAST(N'2017-01-02' AS Date), 4)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (1007, 5, CAST(N'2017-11-03' AS Date), 10)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (1008, 5, CAST(N'2017-10-09' AS Date), 6)
+INSERT [dbo].[EmpHours] ([EmpHoursID], [EmpID], [WorkDate], [Hours]) VALUES (2007, 5, CAST(N'2017-11-04' AS Date), 9)
+SET IDENTITY_INSERT [dbo].[EmpHours] OFF
+SET IDENTITY_INSERT [dbo].[Employees] ON 
+
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (1, N'Peter', N'Sham', N'petersham@hotmail.com', CAST(N'2000-01-01' AS Date), N'(02) 8902 7506')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (2, N'Will', N'Smith', N'willsmith@gmail.com', CAST(N'1990-01-02' AS Date), N'(02) 8704 2134')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (3, N'Luke', N'Lee', N'lee@live.au', CAST(N'1991-02-02' AS Date), N'(03) 9785 1234')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (4, N'Sam', N'Mountain', N'MS@microsoft.au', CAST(N'1992-03-03' AS Date), N'(02) 4567 1234')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (5, N'Uzi', N'Jian', N'adc@league.com', CAST(N'1999-03-01' AS Date), N'(06) 2700 1711')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (6, N'two', N'test', N'two@test.com', CAST(N'2017-12-12' AS Date), N'321')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (7, N'one', N'test', N'one@test1.com', CAST(N'2017-11-11' AS Date), N'67588979')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (8, N'Three', N'change', N'three@test.com', CAST(N'2011-01-01' AS Date), N'123456')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (9, N'four', N'test', N'four@test.com', CAST(N'2000-01-12' AS Date), N'1245')
+INSERT [dbo].[Employees] ([EmpID], [FirstName], [LastName], [Email], [DOB], [Phone]) VALUES (10, N'five', N'test', N'five@test.com', CAST(N'1990-11-11' AS Date), N'12346987')
+SET IDENTITY_INSERT [dbo].[Employees] OFF
+INSERT [dbo].[LoginInfo] ([UserName], [PassWord], [AccountType], [EmpID]) VALUES (N'Peter', N'123', N'Employee', 1)
+INSERT [dbo].[LoginInfo] ([UserName], [PassWord], [AccountType], [EmpID]) VALUES (N'Uzi', N'123', N'Employee', 5)
+INSERT [dbo].[LoginInfo] ([UserName], [PassWord], [AccountType], [EmpID]) VALUES (N'YI', N'123', N'Admin', NULL)
+ALTER TABLE [dbo].[EmpHours]  WITH CHECK ADD FOREIGN KEY([EmpID])
+REFERENCES [dbo].[Employees] ([EmpID])
+GO
+ALTER TABLE [dbo].[LoginInfo]  WITH CHECK ADD FOREIGN KEY([EmpID])
+REFERENCES [dbo].[Employees] ([EmpID])
+GO
+/****** Object:  StoredProcedure [dbo].[sp_EmpHours_InsertNewRecord]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi , Zhang>
+-- Create date: <02-Nov-2017>
+-- Description:	<Insert Employee hours>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_EmpHours_InsertNewRecord] 
+	@EmpID int,
+	@WorkDate date,
+	@Hours float
+AS
+BEGIN
+	Insert into EmpHours(EmpID,WorkDate,Hours)
+	values (@EmpID,@WorkDate,@Hours)
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_EmpHours_SelectByDate]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<yi,zhang>
+-- Create date: <04-11-2017>
+-- Description:	<Select work hours by date>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_EmpHours_SelectByDate] 
+	@WorkDate date
+AS
+BEGIN
+	select * from EmpHours
+	where WorkDate=@WorkDate
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_EmpHours_SelectWorkDateAndHoursByID]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_EmpHours_SelectWorkDateAndHoursByID] 
+	@EmpID int
+AS
+BEGIN
+	Select WorkDate,Hours,EmpHoursID from EmpHours
+	where EmpID = @EmpID
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_EmpHours_UpdateByID]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_EmpHours_UpdateByID]
+	@EmpHoursID int,
+	@Hours float,
+	@WorkDate date
+AS
+BEGIN
+	update EmpHours
+		set
+			Hours=@Hours,
+			WorkDate=@WorkDate
+		where
+			EmpHoursID=@EmpHoursID
+
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Employees_InsertNewEmployee]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi, Zhang>
+-- Create date: <02-Nov-2017>
+-- Description:	<Insert Employee>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_Employees_InsertNewEmployee] 
+
+@FirstName varchar(30),
+@LastName varchar(30),
+@Email varchar(50),
+@DOB date,
+@Phone varchar(20)
+AS
+BEGIN
+	Insert into Employees (FirstName,LastName,Email,DOB,Phone)
+	values (@FirstName,@LastName,@Email,@DOB,@Phone)
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Employees_SelectAll]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi , Zhang>
+-- Create date: <02-Nov-2017>
+-- Description:	<select all employees>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_Employees_SelectAll]
+AS
+BEGIN
+	Select * from Employees
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Employees_SelectByEmail]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi , Zhang>
+-- Create date: <02-Nov-2017>
+-- Description:	<select employee by email>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_Employees_SelectByEmail] 
+	@Email varchar(50)
+AS
+BEGIN
+	Select * from Employees
+	where Email=@Email
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Employees_SelectByID]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi , Zhang>
+-- Create date: <02-Nov-2017>
+-- Description:	<select employee by EmpId>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_Employees_SelectByID] 
+	@EmpID int
+AS
+BEGIN
+	Select * from Employees
+	where EmpID = @EmpID
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Employees_UpdateEmployeeInfo]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi , Zhang>
+-- Create date: <02-Nov-2017>
+-- Description:	<Update Employee by Id>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_Employees_UpdateEmployeeInfo] 
+	@EmpID int,
+	@FirstName varchar(30),
+	@LastName varchar(30),
+	@Email varchar(50),
+	@DOB date,
+	@Phone varchar(20)
+AS
+BEGIN
+	Update Employees
+	set 
+		FirstName=@FirstName,
+		LastName=@LastName,
+		Email=@Email,
+		DOB=@DOB,
+		Phone=@Phone
+	where 
+		EmpID=@EmpID
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_EmployeesAndEmpHours_SelectAll]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Yi , Zhang>
+-- Create date: <03-Nov-2017>
+-- Description:	<select employee work hours with first name and last name>
+-- =============================================
+Create PROCEDURE [dbo].[sp_EmployeesAndEmpHours_SelectAll]
+	
+AS
+BEGIN
+	Select EmpHours.EmpID, EmpHoursID,FirstName,LastName, WorkDate,Hours
+	from EmpHours, Employees
+	where EmpHours.EmpID=Employees.EmpID
+	order by EmpID
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_LoginInfo_Compare]    Script Date: 2017/11/5 16:28:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_LoginInfo_Compare]
+	@UserName varchar(50),
+	@PassWord varchar(50)
+	
+AS
+BEGIN
+	select *
+	from LoginInfo
+	where UserName=@UserName and PassWord=@PassWord
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [YI_PD2_ETSDatabase] SET  READ_WRITE 
+GO
