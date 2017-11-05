@@ -1,0 +1,10 @@
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.Entity\bin\Debug\ETS.Entity.dll
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.Entity\bin\Debug\ETS.Entity.pdb
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.Entity\obj\Debug\ETS.Entity.csprojResolveAssemblyReference.cache
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.Entity\obj\Debug\ETS.Entity.dll
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.Entity\obj\Debug\ETS.Entity.pdb
+D:\term2_ProjectETS\ETS_v1.1\ETS.Entity\bin\Debug\ETS.Entity.dll
+D:\term2_ProjectETS\ETS_v1.1\ETS.Entity\bin\Debug\ETS.Entity.pdb
+D:\term2_ProjectETS\ETS_v1.1\ETS.Entity\obj\Debug\ETS.Entity.csprojResolveAssemblyReference.cache
+D:\term2_ProjectETS\ETS_v1.1\ETS.Entity\obj\Debug\ETS.Entity.dll
+D:\term2_ProjectETS\ETS_v1.1\ETS.Entity\obj\Debug\ETS.Entity.pdb
