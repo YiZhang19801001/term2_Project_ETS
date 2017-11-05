@@ -1,0 +1,14 @@
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\bin\Debug\ETS.DataAccess.dll
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\bin\Debug\ETS.DataAccess.pdb
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\bin\Debug\ETS.Entity.dll
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\bin\Debug\ETS.Entity.pdb
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\obj\Debug\ETS.DataAccess.csprojResolveAssemblyReference.cache
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\obj\Debug\ETS.DataAccess.dll
+D:\yi_pd2student_works\term2_ProjectETS\ETS\ETS.DataAccess\obj\Debug\ETS.DataAccess.pdb
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\bin\Debug\ETS.DataAccess.dll
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\bin\Debug\ETS.DataAccess.pdb
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\bin\Debug\ETS.Entity.dll
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\bin\Debug\ETS.Entity.pdb
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\obj\Debug\ETS.DataAccess.csprojResolveAssemblyReference.cache
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\obj\Debug\ETS.DataAccess.dll
+D:\term2_ProjectETS\ETS_v1.1\ETS.DataAccess\obj\Debug\ETS.DataAccess.pdb
