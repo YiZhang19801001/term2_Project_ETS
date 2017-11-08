@@ -12,3 +12,5 @@
   <li>Ability to record employee's working hours in a daily bases</li>
   <li>Ability to generate a report to shouw all employees and their hours by a selected data and the total hours</li>
 </ol>
+
+
